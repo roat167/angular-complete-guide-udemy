@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -6,28 +6,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-  newServerName = '';
-  newServerContent = '';
+  //@Output() passing own event our of the component
+  @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>(); // generic type  
+  @Output('bpCreated') bluePrintCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  //newServerName = '';
+  //newServerContent = '';
+  @ViewChild('contentInput') serverContentInput: ElementRef; //name of local reference from html, you also link to component
 
   constructor() { }
 
-  ngOnInit() {
+  //lifecyle: called once the component is initialized, run after constructor
+  ngOnInit() { 
   }
 
-  onAddServer() {
-    // this.serverElements.push({
-    //   type: 'server',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
+  onAddServer(nameInput: HTMLInputElement) {
+    console.log(this.serverContentInput);
+    this.serverCreated.emit({
+      serverName: nameInput.value,
+       serverContent: this.serverContentInput.nativeElement.value
+      });
   }
 
-  onAddBlueprint() {
-    // this.serverElements.push({
-    //   type: 'blueprint',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
+  onAddBlueprint(nameInput: HTMLInputElement) {
+    //console.log(this.serverContentInput);
+    this.bluePrintCreated.emit({
+      serverName: nameInput.value,
+      serverContent: this.serverContentInput.nativeElement.value
+      });
   }
 
 }
