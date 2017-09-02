@@ -1,0 +1,26 @@
+	Planning App
+
+Components:
+- Root
+  - Header
+
+
+========Shopping List======== Feature
+	Components:		
+	- Shopping List 
+	- Shopping List Edit 
+
+	Model (data):
+	- Ingredient
+
+
+=========Recipe Book=========== Feature
+	Components:		
+	- Recipet List 
+	- Recipe Item
+	- Recipe Details
+
+	Model (data):
+	- Recipe
+
+
