@@ -1,10 +1,11 @@
 <div class="panel panel-default">
-  <!-- <div class="panel-heading">{{ element.name }}</div> -->
-  <div class="panel-heading">{{ name }}</div>
-  <div class="panel-body">
-    <p>
-      <strong *ngIf="type === 'server'" style="color: red">{{ content }}</strong>
-      <em *ngIf="type === 'blueprint'">{{ content }}</em>
-    </p>
-  </div>
+    <!-- <div class="panel-heading">{{ myElement.name }}</div>     -->
+    <div class="panel-heading" #heading>{{ name }}</div>    
+    <div class="panel-body">
+        <!-- <p>
+            <strong *ngIf="myElement.type === 'server'" style="color: red"> {{ myElement.content }}</strong>
+            <em *ngIf="myElement.type === 'blueprint'"> {{ myElement.content }}</em>
+        </p> -->
+        <ng-content></ng-content>
+    </div>
 </div>
